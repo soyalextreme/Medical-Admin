@@ -1,14 +1,11 @@
+package model;
+
 import java.util.ArrayList;
 import java.util.Date;
 
-public class Doctor {
+public class Doctor extends User {
 
    private static final String FORMAT_NAME = "Name OtherName";
-   static int currentId = 0;
-   int id;
-   private String name;
-   private String lastName;
-   private String email;
    private String speciality;
 
 
@@ -17,14 +14,11 @@ public class Doctor {
    /**
     * First Constructor
     * @param  name String the name of the doctor
-    * @param lastName String the lastname of the doctor
     */
-   Doctor(String name, String lastName, String email){
-      this.name = name;
-      this.lastName = lastName;
-      this.email = email;
-      id= ++currentId;
+   public Doctor(String name, String email){
+      super(name, email);
    }
+
    // Getters
 
    public String getSpeciality() {
@@ -35,44 +29,18 @@ public class Doctor {
       this.speciality = speciality;
    }
 
-   public void setName(String name){
-      this.name = name;
-   }
 
-   public String getName(){
-      return name;
-   }
-
-   public String getLastName() {
-      return lastName;
-   }
-
-   public void setLastName(String lastName) {
-      this.lastName = lastName;
-   }
-
-   public String getEmail() {
-      return email;
-   }
-
-   public void setEmail(String email) {
-      this.email = email;
-   }
-
-// Methods
+   // Methods
 
    public void showFullName(){
-      System.out.println(this.name + " " + this.lastName);
+      System.out.println(super.getName());
    }
 
-   public void showId(){
-      System.out.println(this.id);
-   }
 
 
    // Static Methods
    public static void describe(){
-      System.out.println("Class Doctor Attributes: name, lastname, id, specially");
+      System.out.println("Class model.Doctor Attributes: name, lastname, id, specially");
    }
 
 
@@ -81,9 +49,6 @@ public class Doctor {
    }
 
 
-   public static void id(){
-      System.out.println("ID Doctor: " + currentId);
-   }
 
    private ArrayList<AvalableAppointment> availableAppointments = new ArrayList<AvalableAppointment>();
 
@@ -122,6 +87,18 @@ public class Doctor {
       public void setTime(String time) {
          this.time = time;
       }
+
+      @Override
+      public String toString() {
+         return "Available Appointments \nDate: " + date + "\nTime: " + time;
+      }
+   }
+
+
+   @Override
+   public String toString() {
+      System.out.println("DOCTOR REPORT");
+      return super.toString() + "Speciality: " + speciality + " Available: " + availableAppointments.toString();
    }
 }
 

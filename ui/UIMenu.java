@@ -13,9 +13,9 @@ public class UIMenu {
     public static void showAdminMenu(){
         System.out.println("ADMIN MENU");
         System.out.println("OPCIONES:");
-        System.out.println("a) Crear Super User");
-        System.out.println("b) Modificar Super User");
-        System.out.println("c) Borrar Super User");
+        System.out.println("a) Crear Super model.User");
+        System.out.println("b) Modificar Super model.User");
+        System.out.println("c) Borrar Super model.User");
     }
 
     public static void showClientsMenu(){

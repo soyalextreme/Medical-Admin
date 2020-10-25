@@ -1,25 +1,18 @@
-import java.math.BigInteger;
-import java.util.ArrayList;
+import model.Doctor;
+import model.Patient;
+
 import java.util.Date;
-import java.util.InputMismatchException;
-import java.util.Scanner;
 
 import static ui.UIMenu.*;
-import static  inputs.InputInt.*;
 
 public class Main {
 
 
-    public enum Level{
-       LOW,
-       MEDIUM,
-       HIGH,
-    }
 
 
     public static void main(String[] args) {
         showMainMenu();
-        Doctor newDoc = new Doctor("Alejandro", "Andrade", "alex@doctor.com");
+        Doctor newDoc = new Doctor("Alejandro Andrade", "alex@platzi.com");
         newDoc.addAvailableAppointment(new Date(), "3pm");
         newDoc.addAvailableAppointment(new Date(), "5pm");
         newDoc.addAvailableAppointment(new Date(), "7pm");
@@ -32,24 +25,10 @@ public class Main {
 
 
 
-        Patient newPatient = new Patient("Humberto", "Garcia","humberto@patient.com");
-        Patient newPatient2 = new Patient("Alex", "Andrade","alex@patient.com");
+        Patient newPatient = new Patient("Humberto","humberto@patient.com");
 
-
-        int age = inputInt("Give me your Age: ", 18, 150, 18);
-
-
-        Level myVar = Level.MEDIUM;
-        System.out.println(myVar);
-
-        ArrayList<Patient> patients = new ArrayList<Patient>();
-        patients.add(newPatient);
-        patients.add(newPatient2);
-
-        for(int i = 0; i < patients.size() ; i++){
-            String name = patients.get(i).getName();
-            System.out.println(name);
-        }
+        System.out.println(newPatient);
+        System.out.println(newDoc);
 
     }
 
