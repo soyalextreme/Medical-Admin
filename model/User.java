@@ -1,6 +1,6 @@
 package model;
 
-public class User {
+public abstract class User {
     private int id;
     private String name;
     private String email;
@@ -64,4 +64,7 @@ public class User {
     public String toString() {
         return "model.User: " + name +  " Email: " + email + "\nAddress: " + address + " Phone: " + phoneNumber ;
     }
+
+    // tienen un metdodo que se tenga que implementar en tdoes los usuarios
+    public abstract void showDataUser();
 }

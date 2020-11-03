@@ -1,5 +1,8 @@
 package model;
 
+import javax.management.ConstructorParameters;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -52,7 +55,8 @@ public class Doctor extends User {
 
    private ArrayList<AvalableAppointment> availableAppointments = new ArrayList<AvalableAppointment>();
 
-   public void addAvailableAppointment(Date date, String time){
+   public void addAvailableAppointment(String date, String time){
+
       availableAppointments.add(new Doctor.AvalableAppointment(date, time));
    }
 
@@ -66,14 +70,25 @@ public class Doctor extends User {
       private int id;
       private Date date;
       private String time;
+      SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
 
-      AvalableAppointment(Date date, String time){
-         this.date = date;
+      AvalableAppointment(String date, String time){
+
+         try {
+            this.date = format.parse(date);
+         }catch (ParseException e){
+            e.printStackTrace();
+         }
          this.time = time;
       }
 
-      public Date getDate() {
+      public Date getDate(String DATE ){
          return date;
+      }
+
+      public String getDate(){
+         return format.format(date);
+
       }
 
       public void setDate(Date date) {
@@ -92,8 +107,16 @@ public class Doctor extends User {
       public String toString() {
          return "Available Appointments \nDate: " + date + "\nTime: " + time;
       }
+
    }
 
+
+   @Override
+   public void showDataUser() {
+      System.out.println("Speciality: " + speciality);
+      System.out.println("Department: 123123");
+      System.out.println("Hospital: Cruz Roja de Mexico");
+   }
 
    @Override
    public String toString() {
